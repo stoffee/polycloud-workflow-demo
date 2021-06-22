@@ -66,9 +66,23 @@ resource "google_compute_instance" "default" {
 
   metadata = {
     TTL = "24"
+    AWS_TAGS = data.terraform_remote_state.aws.outputs.tags
+    AWS_PUBLIC_IP = data.terraform_remote_state.aws.outputs.public_ip
+    AWS_PRIVATE_IP = data.terraform_remote_state.aws.outputs.private_ip
   }
 
   metadata_startup_script = <<SCRIPT
   sudo apt update
   SCRIPT
+}
+
+data "terraform_remote_state" "aws" {
+  backend = "remote"
+
+  config = {
+    organization = "cdunlap"
+    workspaces = {
+      name = "MultiCloud_Workflow_1_AWS"
+    }
+  }
 }
