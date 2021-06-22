@@ -66,7 +66,7 @@ resource "google_compute_instance" "default" {
 
   metadata = {
     TTL = "24"
-    AWS_TAGS = data.terraform_remote_state.aws.outputs.tags
+#    AWS_TAGS = data.terraform_remote_state.aws.outputs.tags
     AWS_PUBLIC_IP = data.terraform_remote_state.aws.outputs.public_ip
     AWS_PRIVATE_IP = data.terraform_remote_state.aws.outputs.private_ip
   }
