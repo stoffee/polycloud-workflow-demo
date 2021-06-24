@@ -31,7 +31,6 @@ resource "aws_instance" "demo" {
 
   tags = {
     Name = random_pet.server.id
-    #uncomment this for working, comment out for sentinel policy trigger
     Owner = "chrisd"
     TTL   = "24hrs"
   }
@@ -65,5 +64,5 @@ variable "boinc_project_id" {
   description = "Boinc Project id: boinccmd --lookup_account URL email password https://boinc.berkeley.edu/wiki/Boinccmd_tool"
 }
 variable "ssh_key_name" {
-  description = "You AWS SSH KeyName"
+  description = "You AWS SSH KeyName Within the Region"
 }
